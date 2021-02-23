@@ -1,0 +1,40 @@
+main .new-tweet {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  flex-direction: column;
+}
+
+main h2 {
+  display: flex;
+}
+
+
+main form {
+  display: flex;
+  flex-direction: column;
+}
+
+main textarea {
+  background-color: #f4f1ec;
+  border-width: 0;
+  border-bottom-width: 8px;
+  margin-bottom: 15px;
+}
+
+main ::-webkit-input-placeholder {
+  font-weight: bold;
+}
+
+main .user-feedback {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Bungee', sans-serif;
+
+}
+
+main button {
+  background-color: #4056A1;
+  color: white;
+}
