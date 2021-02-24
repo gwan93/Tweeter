@@ -1,8 +1,13 @@
+:root {
+  --width: 100px;
+}
+
 main .new-tweet {
   display: flex;
   justify-content: center;
   width: 75%;
   flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 main h2 {
@@ -19,7 +24,7 @@ main textarea {
   background-color: #f4f1ec;
   border-width: 0;
   border-bottom-width: 8px;
-  margin-bottom: 15px;
+  margin-bottom: var(--width);
 }
 
 main ::-webkit-input-placeholder {
