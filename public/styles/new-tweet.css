@@ -1,5 +1,12 @@
 :root {
-  --width: 100px;
+  --width: 15px;
+}
+
+h4 {
+  margin: 0 0 2rem 0;
+  padding: 1rem;
+  color: red;
+  border: 2px red solid;
 }
 
 main .new-tweet {
@@ -12,6 +19,11 @@ main .new-tweet {
 
 main h2 {
   display: flex;
+  margin: 1rem 0 1rem 0;
+}
+
+main .hidden {
+  display: none;
 }
 
 

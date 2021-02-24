@@ -16,6 +16,7 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
 
     <!-- Google Fonts - Bungee Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -53,6 +54,7 @@
       
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <h4 id="error-messages" class="hidden"></h4>
         <form action="/tweets/" method="POST">
           <label for="tweet-text"></label>
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>

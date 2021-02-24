@@ -4,33 +4,14 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 const createTweetElement = function(tweetObj) {
+  const date = new Date(tweetObj.created_at);
   const $tweet = $(`
     <article>
       <div class="tweet-header">
@@ -43,10 +24,10 @@ const createTweetElement = function(tweetObj) {
         </div>
       </div>
       <footer class="tweet-footer">
-        <h3 class="tweet-text">${tweetObj.content.text}</h3>
+        <h3 class="tweet-text">${escape(tweetObj.content.text)}</h3>
         <div class="tweet-details">
           <div class="tweet-age">
-            <h6>${tweetObj.created_at}</h6>
+            <h6>${date.toUTCString()}</h6>
           </div>
           <div class="cross-share">
             <h6>O</h6>
@@ -61,17 +42,43 @@ const createTweetElement = function(tweetObj) {
 };
 
 const renderTweets = (tweetArr) => {
-  for (let tweetData of data) {
+  for (let tweetData of tweetArr) {
     const $tweet = createTweetElement(tweetData);
-  $(".tweet-container").append($tweet);
+    $(".tweet-container").prepend($tweet);
   }
-  
 };
 
-
-
-
+const loadTweets = () => {
+  $.ajax('http://localhost:8080/tweets', { method: 'GET' })
+  .then(function (data) {
+    renderTweets(data);
+  })
+};
 
 $(document).ready(function() {
-  renderTweets();
+  loadTweets();
+
+
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+    if (!$('#tweet-text').val()) {
+      $("#error-messages").html('Tweet body must contain text.');
+      $("#error-messages").removeClass("hidden");
+    } else if ($('.counter').val() < 0) {
+      $("#error-messages").html('Tweet is too long!');
+      $("#error-messages").removeClass("hidden");
+    } else { 
+      // if (!$("#error-messages").hasClass("hidden")) 
+      $("#error-messages").addClass("hidden")
+      const textBody = $(this).serialize();
+      $.post('http://localhost:8080/tweets/', textBody)
+      $(".tweet-container").empty(); // removes all tweets from user page
+      loadTweets(); // repopulates all tweets with new tweet included
+    }
+
+  })
+
+
+
+
 })
