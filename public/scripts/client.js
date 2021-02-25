@@ -8,7 +8,7 @@ const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
-}
+};
 
 const createTweetElement = function(tweetObj) {
   const date = new Date(tweetObj.created_at);
@@ -50,34 +50,35 @@ const renderTweets = (tweetArr) => {
 
 const loadTweets = () => {
   $.ajax('http://localhost:8080/tweets', { method: 'GET' })
-  .then(function (data) {
-    renderTweets(data);
-  })
+    .then(function(data) {
+      renderTweets(data);
+    });
 };
 
 $(document).ready(function() {
   loadTweets();
 
-
+  // form submit function and slide down functionality
   $("form").on("submit", function(event) {
     event.preventDefault();
     const textBody = $(this).serialize();
 
     if (!$('#tweet-text').val()) {
       $("#error-messages").html('Tweet body must contain text.');
-      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow')
+      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow');
     } else if ($('.counter').val() < 0) {
       $("#error-messages").html('Tweet is too long!');
-      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow')
-    } else { 
+      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow');
+    } else {
       $("#error-messages").slideUp("slow", function() {
-        $.post('http://localhost:8080/tweets/', textBody)
+        $.post('http://localhost:8080/tweets/', textBody);
         $(".tweet-container").empty(); // removes all tweets from user page
         loadTweets(); // repopulates all tweets with new tweet included
       })
     }
-  })
+  });
 
+  // compose tweet slidedown functionality
   $("#write-a-new-tweet").on("click", function(event) {
     event.preventDefault();
 
@@ -88,5 +89,21 @@ $(document).ready(function() {
     } else {
       $(".new-tweet").slideUp("slow");
     }
-  })
-})
+  });
+
+  const btn = $("#return-button");
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass('show');
+    } else {
+      btn.removeClass('show');
+    }
+  });
+
+  btn.on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({scrollTop:0}, '300');
+  });
+
+});
