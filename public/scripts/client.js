@@ -76,7 +76,7 @@ $(document).ready(function() {
       errorBox.slideUp("slow", function() {
         $.post('http://localhost:8080/tweets/', textBody, function() {
           $("#tweet-text").val('');
-          $("#counter").val(140);
+          $("#counter").val(140).removeClass("red-font");
           $(".tweet-container").empty(); // removes all tweets from user page
           loadTweets(); // repopulates all tweets with new tweet included
         });
