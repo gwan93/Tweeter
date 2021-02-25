@@ -1,6 +1,5 @@
 nav {
   height: 120px;
-  width: 100vmax;
   background-color: #4056A1;
   color: #FFFFFF;
   padding: 1.5em;
@@ -10,13 +9,12 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
 }
-
 nav span {
-  font-family: 'Bungee', sans-serif;
+  font-family: "Bungee", sans-serif;
 }
-
-#write-a-new-tweet {
+nav #write-a-new-tweet {
   display: inline;
   color: #FFFFFF;
   text-decoration: none;

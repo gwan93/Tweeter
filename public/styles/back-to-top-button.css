@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #return-button {
   display: inline-block;
   background-color: #dbb648;
@@ -9,22 +10,20 @@
   position: fixed;
   bottom: 30px;
   right: 30px;
-  transition: background-color .3s, opacity .5s, visibility .5s;
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
   opacity: 0;
   visibility: hidden;
-  z-index: 1000; 
+  z-index: 1000;
 }
 #return-button:hover {
   cursor: pointer;
   background-color: #333;
 }
-
 #return-button:active {
   background-color: #555;
 }
-
 #return-button::after {
-  content: "\f077";
+  content: "";
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
@@ -32,7 +31,6 @@
   line-height: 65px;
   color: #fff;
 }
-
 #return-button.show {
   opacity: 1;
   visibility: visible;

@@ -1,0 +1,25 @@
+@import 'variables';
+
+nav {
+  height: $nav-bar-height;
+  background-color: $blue-color;
+  color: #FFFFFF;
+  padding: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  span {
+    font-family: 'Bungee', sans-serif;
+  }
+
+  #write-a-new-tweet {
+    display: inline;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+}
