@@ -36,7 +36,7 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span>tweeter</span>
-      <p>Write a new tweet</p>
+      <a id="write-a-new-tweet" href="">Write a new tweet</a>
     </nav>
 
     <header>
@@ -52,7 +52,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       
-      <section class="new-tweet">
+      <section class="new-tweet hidden">
         <h2>Compose Tweet</h2>
         <h4 id="error-messages" class="hidden"></h4>
         <form action="/tweets/" method="POST">

@@ -61,24 +61,32 @@ $(document).ready(function() {
 
   $("form").on("submit", function(event) {
     event.preventDefault();
+    const textBody = $(this).serialize();
+
     if (!$('#tweet-text').val()) {
       $("#error-messages").html('Tweet body must contain text.');
-      $("#error-messages").removeClass("hidden");
+      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow')
     } else if ($('.counter').val() < 0) {
       $("#error-messages").html('Tweet is too long!');
-      $("#error-messages").removeClass("hidden");
+      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow')
     } else { 
-      // if (!$("#error-messages").hasClass("hidden")) 
-      $("#error-messages").addClass("hidden")
-      const textBody = $(this).serialize();
-      $.post('http://localhost:8080/tweets/', textBody)
-      $(".tweet-container").empty(); // removes all tweets from user page
-      loadTweets(); // repopulates all tweets with new tweet included
+      $("#error-messages").slideUp("slow", function() {
+        $.post('http://localhost:8080/tweets/', textBody)
+        $(".tweet-container").empty(); // removes all tweets from user page
+        loadTweets(); // repopulates all tweets with new tweet included
+      })
     }
-
   })
 
+  $("#write-a-new-tweet").on("click", function(event) {
+    event.preventDefault();
 
-
-
+    if ($(".new-tweet").is(":hidden")) {
+      $(".new-tweet").slideDown("slow", function() {
+        $("textarea").focus();
+      });
+    } else {
+      $(".new-tweet").slideUp("slow");
+    }
+  })
 })
