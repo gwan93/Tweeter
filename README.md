@@ -24,4 +24,4 @@ This repository is the starter code for the project: Students will fork and clon
 ## Sample Screenshots
 
 !["Desktop View"](https://github.com/gwan93/tweeter/blob/master/docs/tweeter-desktop.png?raw=true)
-!["Mobile View"]()https://github.com/gwan93/tweeter/blob/master/docs/tweeter-mobile.png?raw=true
+!["Mobile View"](https://github.com/gwan93/tweeter/blob/master/docs/tweeter-mobile.png?raw=true)
