@@ -7,7 +7,7 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- For icons -->
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -16,11 +16,12 @@
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/single-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/back-to-top-button.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/responsive.css" type="text/css" />
+
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script> <!-- For handling tweet timestamps -->
     
     <!-- Google Fonts - Bungee Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -37,42 +38,48 @@
   </head>
 
   <body>
-    <!-- Top nav bar (fixed) -->
     <nav>
       <span>tweeter</span>
       <a id="write-a-new-tweet" href="">Write a new tweet</a>
     </nav>
-
-    <header id="profile-header">
-      <div class="profile-picture">
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <div class="username">
-          <h2>Amy <span>Mansell</span></h2>
-      </div>
-    </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
+    
+    <div class="tweet-content">
       
-      <section class="new-tweet hidden">
-        <h3 id="new-tweet-description">What are you humming about?</h3>
-        <h4 id="error-messages" class="hidden"></h4>
-        <form id="tweet-form" action="/tweets/" method="POST">
-          <label for="tweet-text"></label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="user-feedback">
-            <button id="tweet-button" type="submit">Tweet</button>
-            <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
+      <section class="user-info">
+        <header id="profile-header">
+          <div class="profile-picture">
+              <img src="/images/profile-hex.png"> 
           </div>
-        </form>
-      </section>
-
-      <section class="tweet-container">
-
+          <div class="username">
+              <h2>Amy <span>Mansell</span></h2>
+          </div>
+        </header>
       </section>
       
-    </main>
+  
+      <main class="container">
+  
+        <section class="new-tweet hidden">
+          <h3 id="new-tweet-description">What are you humming about?</h3>
+          <h4 id="error-messages" class="hidden"></h4>
+          <form id="tweet-form" action="/tweets/" method="POST">
+            <label for="tweet-text"></label>
+            <textarea name="text" id="tweet-text"></textarea>
+            <div class="user-feedback">
+              <button id="tweet-button" type="submit">Tweet</button>
+              <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+  
+        <section class="tweet-container"></section>
+        
+      </main>
+    </div>
+
+
+    
+
     <a id="return-button"></a>
 
   </body>

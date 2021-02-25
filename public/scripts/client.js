@@ -1,16 +1,9 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
- // protect from cross-site scripting
+// protect from cross-site scripting
 const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
-
 
 const createTweetElement = function(tweetObj) {
   const date = new Date(tweetObj.created_at);
@@ -60,7 +53,7 @@ const loadTweets = () => {
 $(document).ready(function() {
   loadTweets();
 
-  // form submit function and slide down functionality
+  // form submit function and error slide down
   $("form").on("submit", function(event) {
     event.preventDefault();
     const textBody = $(this).serialize();
@@ -106,8 +99,8 @@ $(document).ready(function() {
     }
   });
 
-  btn.on('click', function(e) {
-    e.preventDefault();
+  btn.on('click', function(event) {
+    event.preventDefault();
     $('html, body').animate({scrollTop:0}, '300');
     $(".new-tweet").slideDown("slow", function() {
       $("textarea").focus();
