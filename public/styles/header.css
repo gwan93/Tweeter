@@ -1,4 +1,4 @@
-header {
+#profile-header {
   height: 400px;
   width: 100%;
   background-color: #dbb648;
@@ -8,9 +8,8 @@ header {
   flex-direction: column;
   align-items: center;
   margin-top: 120px;
-
 }
 
-header span {
+#profile-header span {
   font-weight: 100;
 }

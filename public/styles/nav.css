@@ -7,15 +7,17 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 nav span {
   font-family: 'Bungee', sans-serif;
 }
 
-nav p {
+#write-a-new-tweet {
   display: inline;
+  color: #FFFFFF;
+  text-decoration: none;
 }

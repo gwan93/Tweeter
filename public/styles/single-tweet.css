@@ -4,7 +4,6 @@
   width: 75%;
 }
 
-
 article {
   display: flex;
   flex-direction: column;
@@ -22,7 +21,7 @@ article:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%
+  width: 90%
 }
 
 .user-details {
@@ -33,10 +32,11 @@ article:hover {
 
 article h3 {
   font-weight: normal;
-  margin: 0;
+  margin: 0 1rem 0 1rem;
+  word-wrap: break-word;
 }
 
-.handle h4 {
+.handle p {
   opacity: 0.5;
   font-weight: normal;
 }
@@ -45,7 +45,7 @@ article h3 {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
 }
 
 .tweet-text {
@@ -60,6 +60,7 @@ article h3 {
   margin: 0;
   padding: 20px;
 }
+
 .cross-share {
   display: flex;
   flex-direction: row;
@@ -67,4 +68,8 @@ article h3 {
 
 h6 {
   margin: 0;
+}
+
+.material-icons:hover {
+  opacity: 0.5;
 }

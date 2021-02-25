@@ -4,9 +4,9 @@ $(document).ready(function() {
     const counterEl = $(this).parent().find(".counter")
     counterEl.val(140 - charCount);
     if (charCount >= 0 && charCount < 140) {
-      counterEl.css({"color": "#545149"});
+      counterEl.removeClass("red-font");
     } else {
-      counterEl.css({"color": "red"});
+      counterEl.addClass("red-font");
     }
   })
 });

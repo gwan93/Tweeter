@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+ // protect from cross-site scripting
 const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
@@ -20,7 +21,7 @@ const createTweetElement = function(tweetObj) {
           <h3>${tweetObj.user.name}</h3>
         </div>
         <div class="handle">
-          <h4>${tweetObj.user.handle}</h4>
+          <p>${tweetObj.user.handle}</h4>
         </div>
       </div>
       <footer class="tweet-footer">
@@ -30,9 +31,9 @@ const createTweetElement = function(tweetObj) {
             <h6>${date.toUTCString()}</h6>
           </div>
           <div class="cross-share">
-            <h6>O</h6>
-            <h6>X</h6>
-            <h6>O</h6>
+            <i class="material-icons">favorite_border</i>
+            <i class="material-icons">share</i>
+            <i class="material-icons">flag</i>
           </div>
         </div>
       </footer>
@@ -62,26 +63,26 @@ $(document).ready(function() {
   $("form").on("submit", function(event) {
     event.preventDefault();
     const textBody = $(this).serialize();
+    const errorBox = $("#error-messages");
 
     if (!$('#tweet-text').val()) {
-      $("#error-messages").html('Tweet body must contain text.');
-      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow');
+      errorBox.html('Tweet body must contain text.');
+      if (errorBox.is(":hidden")) errorBox.slideDown('slow');
     } else if ($('.counter').val() < 0) {
-      $("#error-messages").html('Tweet is too long!');
-      if ($("#error-messages").is(":hidden")) $("#error-messages").slideDown('slow');
+      errorBox.html('Tweet is too long!');
+      if (errorBox.is(":hidden")) errorBox.slideDown('slow');
     } else {
-      $("#error-messages").slideUp("slow", function() {
-        $.post('http://localhost:8080/tweets/', textBody);
-        $(".tweet-container").empty(); // removes all tweets from user page
-        loadTweets(); // repopulates all tweets with new tweet included
+      errorBox.slideUp("slow", function() {
+        $.post('http://localhost:8080/tweets/', textBody, function() {
+          $(".tweet-container").empty(); // removes all tweets from user page
+          loadTweets(); // repopulates all tweets with new tweet included
+        });
       })
     }
   });
 
-  // compose tweet slidedown functionality
   $("#write-a-new-tweet").on("click", function(event) {
     event.preventDefault();
-
     if ($(".new-tweet").is(":hidden")) {
       $(".new-tweet").slideDown("slow", function() {
         $("textarea").focus();
@@ -91,8 +92,8 @@ $(document).ready(function() {
     }
   });
 
+  // return to top button functionality
   const btn = $("#return-button");
-
   $(window).scroll(function() {
     if ($(window).scrollTop() > 300) {
       btn.addClass('show');
@@ -104,6 +105,8 @@ $(document).ready(function() {
   btn.on('click', function(e) {
     e.preventDefault();
     $('html, body').animate({scrollTop:0}, '300');
-  });
-
+    $(".new-tweet").slideDown("slow", function() {
+      $("textarea").focus();
+    });
+  })
 });

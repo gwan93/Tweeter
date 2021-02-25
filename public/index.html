@@ -7,7 +7,8 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
@@ -41,11 +42,10 @@
       <a id="write-a-new-tweet" href="">Write a new tweet</a>
     </nav>
 
-    <header>
+    <header id="profile-header">
       <div class="profile-picture">
           <img src="/images/profile-hex.png"> 
       </div>
-      <br>
       <div class="username">
           <h2>Amy <span>Mansell</span></h2>
       </div>
@@ -55,14 +55,14 @@
     <main class="container">
       
       <section class="new-tweet hidden">
-        <h2>Compose Tweet</h2>
+        <h3 id="new-tweet-description">What are you humming about?</h3>
         <h4 id="error-messages" class="hidden"></h4>
-        <form action="/tweets/" method="POST">
+        <form id="tweet-form" action="/tweets/" method="POST">
           <label for="tweet-text"></label>
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <textarea name="text" id="tweet-text"></textarea>
           <div class="user-feedback">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+            <button id="tweet-button" type="submit">Tweet</button>
+            <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
