@@ -21,7 +21,8 @@ article:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 90%
+  width: 90%;
+  margin-top: 1rem;
 }
 
 .user-details {

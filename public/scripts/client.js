@@ -11,6 +11,7 @@ const escape =  function(str) {
   return div.innerHTML;
 };
 
+
 const createTweetElement = function(tweetObj) {
   const date = new Date(tweetObj.created_at);
   const $tweet = $(`
@@ -28,7 +29,7 @@ const createTweetElement = function(tweetObj) {
         <h3 class="tweet-text">${escape(tweetObj.content.text)}</h3>
         <div class="tweet-details">
           <div class="tweet-age">
-            <h6>${date.toUTCString()}</h6>
+            <h6>${moment(tweetObj.created_at).fromNow()}</h6>
           </div>
           <div class="cross-share">
             <i class="material-icons">favorite_border</i>
