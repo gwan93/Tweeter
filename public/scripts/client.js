@@ -44,7 +44,7 @@ const renderTweets = (tweetArr) => {
 };
 
 const loadTweets = () => {
-  $.ajax('http://localhost:8080/tweets', { method: 'GET' })
+  $.ajax('/tweets', { method: 'GET' })
     .then(function(data) {
       renderTweets(data);
     });
@@ -67,7 +67,7 @@ $(document).ready(function() {
       if (errorBox.is(":hidden")) errorBox.slideDown('slow');
     } else {
       errorBox.slideUp("slow", function() {
-        $.post('http://localhost:8080/tweets/', textBody, function() {
+        $.post('/tweets/', textBody, function() {
           $("#tweet-text").val('');
           $("#counter").val(140).removeClass("red-font");
           $(".tweet-container").empty(); // removes all tweets from user page
