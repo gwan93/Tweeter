@@ -1,4 +1,6 @@
 "use strict";
+// Require .env variables
+require('dotenv').config()
 
 // Basic express setup:
 
