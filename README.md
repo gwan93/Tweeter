@@ -1,8 +1,8 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page Twitter clone. Built using jQuery, AJAX, HTML, CSS, and Node, this app allows users to share their deepest, darkest secrets with the world.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+This project is now hosted on Heroku https://tweeter-gw.herokuapp.com/. Please wait 5-10 seconds for the Heroku server to wake up after clicking on the link.
 
 ## Stretch Functionality Included
 - Form area toggle
